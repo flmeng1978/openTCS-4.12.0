@@ -1,0 +1,13 @@
+/.nb-gradle/
+/buildSrc/build/
+/openTCS-API-Base/build/
+/openTCS-API-Injection/build/
+/openTCS-Common/build/
+/openTCS-CommAdapter-Loopback/build/
+/openTCS-Impl-Configuration-cfg4j/build/
+/openTCS-Kernel-Extension-RMI-Services/build/
+/openTCS-Kernel-Extension-HTTP-Services/build/
+/openTCS-Kernel-Extension-Statistics/build/
+/openTCS-Kernel-Extension-TCP-Host-Interface/build/
+/openTCS-Strategies-Default/build/
+/openTCS-Kernel/build/

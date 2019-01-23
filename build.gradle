@@ -23,23 +23,23 @@ buildscript {
 
 apply plugin: 'base' // To add "clean" task to the root project.
 apply plugin: 'distribution'
+//'base'、'distribution'是core plugins provided by Gradle itself
 apply plugin: 'com.github.ben-manes.versions'
 apply plugin: 'opentcs-gradle-plugin'
 
 apply from: "${rootDir}/gradle/versioning.gradle"
 
-group = 'org.opentcs'
+group = 'org.opentcs' //group分项目的所在组的信息
 
 subprojects {
+  //apply from：从其它文件中引入gradle脚本
   apply from: rootProject.file('gradle/common.gradle')
 }
-evaluationDependsOnChildren()
+evaluationDependsOnChildren() //通常情况下都是先配置父项目再配置子项目，这句改变这个顺序
 
 distributions {
   main {
-    contents.from {
-      project(':openTCS-Kernel').ext.collectableDistDir
-    }
+    distributions
     contents.from {
       project(':openTCS-KernelControlCenter').ext.collectableDistDir
     }
@@ -67,6 +67,7 @@ task install {
   dependsOn subprojects*.install
 }
 
+//installDist来自Distribution Plugin
 installDist.dependsOn subDists
 
 distZip {
@@ -101,6 +102,10 @@ task distSrcZip(type: Zip) {
 }
 
 artifacts {
+  //来自Base Plugin
+  //A standard configuration for the production artifacts of a project. 
+  //This results in an uploadArchives task for publishing artifacts attached to
+  //the archives configuration.
   archives distZip
   archives distSrcZip
 }
@@ -117,6 +122,7 @@ task release {
   dependsOn distSrcZip
 }
 
+//包装器，使没有安装gradle的机器能够自动下载定义的gradle版本进行工程构建
 task wrapper(type: Wrapper, description: 'Creates and deploys the Gradle wrapper to the current directory.') {
   gradleVersion = '4.5'
 }

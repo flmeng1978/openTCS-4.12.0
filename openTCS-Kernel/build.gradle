@@ -25,6 +25,8 @@ dependencies {
 distributions {
   main {
     contents {
+      //sourceSets.main.resources.srcDirs参见Java Plugin
+      //指openTCS-Kernel\src\main\resources\org\opentcs\kernel\distribution\config目录
       from "${sourceSets.main.resources.srcDirs[0]}/org/opentcs/kernel/distribution"
     }
   }

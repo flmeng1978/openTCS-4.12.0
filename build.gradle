@@ -49,9 +49,9 @@ distributions {
     contents.from {
       project(':openTCS-PlantOverview').ext.collectableDistDir
     }
-    contents.from {
-      project(':openTCS-Documentation').ext.collectableDistDir
-    }
+//    contents.from {
+//      project(':openTCS-Documentation').ext.collectableDistDir
+//    }
   }
 }
 
@@ -63,7 +63,7 @@ task subDists {
   dependsOn(':openTCS-Kernel:installDist')
   dependsOn(':openTCS-KernelControlCenter:installDist')
   dependsOn(':openTCS-PlantOverview:installDist')
-  dependsOn(':openTCS-Documentation:installDist')
+//  dependsOn(':openTCS-Documentation:installDist')
 }
 
 //subprojects*的语法来源？

@@ -18,6 +18,8 @@ dependencies {
 }
 
 compileJava {
+  //-Xlint: java非标准选项都由 -X 开头，Java Lint选项都由 -Xlint 开头
+  //-Xlint:-rawtypes: 启用或禁用rawtypes的警告
   options.compilerArgs << "-Xlint:-rawtypes"
 }
 

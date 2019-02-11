@@ -41,6 +41,9 @@ distributions {
   main {
     distributions
     contents.from {
+      project(':openTCS-Kernel').ext.collectableDistDir
+    }
+    contents.from {
       project(':openTCS-KernelControlCenter').ext.collectableDistDir
     }
     contents.from {
@@ -63,11 +66,15 @@ task subDists {
   dependsOn(':openTCS-Documentation:installDist')
 }
 
+//subprojects*的语法来源？
+//子项目中没有install定义，是指子项目的文件夹路径吗？
+//build了一下，发现有没有这句没啥变化
 task install {
-  dependsOn subprojects*.install
+  dependsOn subprojects*.install 
 }
 
 //installDist来自Distribution Plugin
+//installDist任务创建了build/install目录
 installDist.dependsOn subDists
 
 distZip {
@@ -106,7 +113,7 @@ artifacts {
   //A standard configuration for the production artifacts of a project. 
   //This results in an uploadArchives task for publishing artifacts attached to
   //the archives configuration.
-  archives distZip
+  archives distZip //这句和distZip好像都执行了一个东西
   archives distSrcZip
 }
 

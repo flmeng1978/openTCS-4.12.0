@@ -154,6 +154,7 @@ public abstract class KernelInjectionModule
    * @return The multibinder.
    */
   protected Multibinder<VehicleCommAdapterFactory> vehicleCommAdaptersBinder() {
+    //每次调用newSetBinder都会创建一个新的set还是只创建一个set？初步猜测
     return Multibinder.newSetBinder(binder(), VehicleCommAdapterFactory.class);
   }
 

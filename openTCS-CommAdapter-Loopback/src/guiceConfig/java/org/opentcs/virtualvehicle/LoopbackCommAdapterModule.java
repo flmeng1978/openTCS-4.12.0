@@ -39,9 +39,12 @@ public class LoopbackCommAdapterModule
     bind(VirtualVehicleConfiguration.class)
         .toInstance(configuration);
 
+    // to install automatically-generated module instances like those created through FactoryModuleBuilder.
+    //更多解释见https://stackoverflow.com/questions/21446685/the-guice-abstractmodule-install-method
     install(new FactoryModuleBuilder().build(LoopbackAdapterComponentsFactory.class));
     
     // tag::documentation_createCommAdapterModule[]
+    //注入参数为VehicleCommAdapterRegistry的Set<VehicleCommAdapterFactory>
     vehicleCommAdaptersBinder().addBinding().to(LoopbackCommunicationAdapterFactory.class);
     // end::documentation_createCommAdapterModule[]
   }

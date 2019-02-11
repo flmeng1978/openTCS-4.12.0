@@ -67,8 +67,16 @@ public class DefaultDispatcherModule
 
   @SuppressWarnings("deprecation")
   private void configureDispatcherDependencies() {
+    
+    /*DefaultDispatcher需注入属性FullDispatchTask
+      FullDispatchTask需注入属性AssignFreeOrdersPhase
+      AssignFreeOrdersPhase需注入属性CompositeVehicleSelectionFilter
+      CompositeVehicleSelectionFilter需注入属性VehicleSelectionFilter
+      嵌套够复杂的！！
+    */
     Multibinder.newSetBinder(binder(), VehicleSelectionFilter.class)
         .addBinding().to(FilterVehiclesAvailableForOrders.class);
+    
     Multibinder.newSetBinder(binder(), TransportOrderSelectionFilter.class)
         .addBinding().to(FilterTransportOrdersDispatchable.class);
     Multibinder.newSetBinder(binder(), ParkVehicleSelectionFilter.class)

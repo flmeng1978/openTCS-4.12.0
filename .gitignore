@@ -11,3 +11,11 @@
 /openTCS-Kernel-Extension-TCP-Host-Interface/build/
 /openTCS-Strategies-Default/build/
 /openTCS-Kernel/build/
+/build/
+/openTCS-Documentation/build/
+/openTCS-KernelControlCenter/build/
+/openTCS-PlantOverview-Panel-LoadGenerator/build/
+/openTCS-PlantOverview-Panel-ResourceAllocation/build/
+/openTCS-PlantOverview-Panel-Statistics/build/
+/openTCS-PlantOverview-Themes-Default/build/
+/openTCS-PlantOverview/build/

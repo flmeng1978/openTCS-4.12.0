@@ -65,7 +65,7 @@ public class RunKernel {
 
     //日志中记录系统及运行环境信息
     Environment.logSystemInfo();
-
+  
     LOG.debug("Setting up openTCS kernel {}...", Environment.getBaselineVersion());
     
     //通过guice绑定KernelStarter等需要要注入的类，并进行配置
@@ -91,8 +91,9 @@ public class RunKernel {
     ConfigurationBindingProvider bindingProvider = configurationBindingProvider();
     for (KernelInjectionModule defaultModule : defaultModules) {
       defaultModule.setConfigBindingProvider(bindingProvider);
-    }
+    } 
 
+    //用外部注册的模块RegisteredModules覆盖缺省模块defaultModules
     return Modules.override(defaultModules)
         .with(findRegisteredModules(bindingProvider));
   }
@@ -105,6 +106,7 @@ public class RunKernel {
   private static List<KernelInjectionModule> findRegisteredModules(
       ConfigurationBindingProvider bindingProvider) {
     List<KernelInjectionModule> registeredModules = new LinkedList<>();
+    //使用ServiceLoader自动搜索lib库中的jar包并从载入各种KernelInjectionModule实现类
     for (KernelInjectionModule module : ServiceLoader.load(KernelInjectionModule.class)) {
       LOG.info("Integrating injection module {}", module.getClass().getName());
       module.setConfigBindingProvider(bindingProvider);

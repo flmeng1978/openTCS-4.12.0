@@ -31,6 +31,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author Stefan Walter (Fraunhofer IML)
  */
+
 public class VehicleCommAdapterRegistry
     implements Lifecycle {
 

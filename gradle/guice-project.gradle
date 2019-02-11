@@ -1,18 +1,22 @@
 sourceSets {
+  //新建一个sourceSet即guiceConfig
   guiceConfig
 }
 
 configurations {
+  //增加一个configuration，从comile这个configuration继承
   guiceConfigCompile.extendsFrom compile
 }
 
 dependencies {
+  //java插件为新增的sourceSet自动添加sourceSetCompile
   guiceConfigCompile sourceSets.main.output
 }
 
 // Attributes for the AsciiDoc documentation to include code from source files
 ext.guiceSrcDir = sourceSets.guiceConfig.java.srcDirs[0]
 
+//java插件为新增的sourceSet自动添加任务comileSourceSetJava
 compileGuiceConfigJava {
   options.compilerArgs << "-Xlint:all"
   options.compilerArgs << "-Xlint:-serial"

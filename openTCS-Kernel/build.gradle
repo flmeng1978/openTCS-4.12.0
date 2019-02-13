@@ -18,6 +18,7 @@ dependencies {
   compile project(':openTCS-Kernel-Extension-RMI-Services')
   compile project(':openTCS-Kernel-Extension-Statistics')
   compile project(':openTCS-Kernel-Extension-TCP-Host-Interface')
+  compile project(':Towin-CommAdapter')
   
   runtime group: 'org.slf4j', name: 'slf4j-jdk14', version: '1.7.21'
 }
